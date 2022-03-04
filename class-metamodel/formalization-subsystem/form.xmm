@@ -2,9 +2,9 @@ metadata
     Title : Formalization Subsystem / Shlaer-Mellor Metamodel
     Author : Leon Starr
     Document ID : mint.sm-meta.class.td.6
-    Version : 2.1.0
+    Version : 2.2.0
     /// Creation date : July 3, 2011
-    Modification date : March 2, 2022
+    Modification date : March 4, 2022
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
@@ -15,12 +15,37 @@ attributes
     Class {I, R151}
     Domain {I, R151}
 --
-class Association Class Reference
+class Associative Reference
 attributes
     Rnum {I, R176}
     Domain {I, R176}
     Association class {R176}
     Participating class {R176}
+--
+class Symmetric Associative Reference
+attributes
+    Rnum {I, R153}
+    Domain {I, R153}
+--
+class Symmetric T Reference
+attributes
+    Rnum {I, R160}
+    Domain {I, R160}
+--
+class Symmetric P Reference
+attributes
+    Rnum {I, R160}
+    Domain {I, R160}
+--
+class Asymmetric Associative Reference
+attributes
+    Rnum {I, R153}
+    Domain {I, R153}
+--
+class Asymmetric Reference
+attributes
+    Rnum {I, Rx}
+    Domain {I, Rx}
 --
 class Association Reference
 attributes
@@ -53,6 +78,18 @@ attributes
     Rnum {I}
     Domain {I}
 --
+class Asymmetric Perspective
+attributes
+    Side {I, R154}
+    Rnum {I, R154}
+    Domain {I, R154}
+--
+class Symmetric Perspective
+attributes
+    Side {I, R154}
+    Rnum {I, R154}
+    Domain {I, R154}
+--
 class Relationship <import:Relationship>
 attributes
     Rnum {I}
@@ -72,7 +109,7 @@ attributes
     Rnum {I, R152, R156, R170}
     Domain {I, R152, R156, R170}
 --
-class Simple Association Reference
+class Simple Reference
 attributes
     From class {I, R152, R157, R176}
     To class {I2, R152c, R176}
@@ -92,20 +129,6 @@ attributes
     Rnum {I}
     Domain {I}
 --
-class P Reference
-attributes
-    Rnum {I, R153, R158}
-    Domain {I, R153, R158}
-    Association class {R153c}
-    Participating class {R153}
---
-class T Reference
-attributes
-    Rnum {I, R153, R158}
-    Domain {I, R153, R158}
-    Association class {R153c}
-    Participating class {R153}
---
 relationships
     R150
     is used to formalize, Mc Relationship
@@ -124,13 +147,14 @@ relationships
         Association Reference
 --
     R153
-    Association Class Reference +
-        T Reference
-        P Reference
+    Associative Reference +
+        Asymmetric Associative Reference
+        Symmetric Associative Reference
 --
     R154
-    refers to, 1 Perspective
-    is refered to by, 1 Association Reference
+    Perspective +
+        Asymmetric Perspective
+        Symmetric Perspective
 --
     R155
     is referred to from, Mc Formalizing Class Role
@@ -143,15 +167,37 @@ relationships
 --
     R157
     defines, 1 Simple Association Class
-    is defined in, 1 Simple Association Reference
+    is defined in, 1 Simple Reference
 --
     R158
-    defines, 1 T Reference
-    is defined in, 1 Association Class
+    is referenced as t by, 1 Associative Reference
+    references as t, 1 Association Class
 --
     R159
-    defines, 1 P Reference
-    is defined in, 1 Association Class
+    is referenced as p by, 1 Associative Reference
+    references as p, 1 Association Class
+--
+    R160
+    Symmetric Associative Reference +
+        Symmetric T Reference
+        Symmetric P Reference
+--
+    R161
+    views, 1 Symmetric Perspective
+    is viewed from, 1 Symmetric T Reference
+--
+    R162
+    views, 1 Symmetric Perspective
+    is viewed from, 1 Symmetric P Reference
+--
+    R163
+    Asymmetric Reference +
+        Asymmetric Associative Reference
+        Simple Reference
+--
+    R164
+    views, 1 Asymmetric Perspective
+    is viewed by, 1 Asymmetric Reference
 --
     R170
     refers to, 1 Superclass
@@ -159,6 +205,6 @@ relationships
 --
     R176
     Association Reference +
-        Simple Association Class Reference
-        Association Class Reference
+        Simple Associative Reference
+        Associative Reference
 --

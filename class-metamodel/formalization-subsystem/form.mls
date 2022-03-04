@@ -4,7 +4,7 @@ presentation default
 orientation landscape
 color institutional
 sheet D
-padding l300 b300
+padding l300 b220
 frame OS Engineer
 frame_presentation default
 nodes
@@ -13,27 +13,37 @@ nodes
     Relationship 2,6
     Formalizing Class Role/2 3,4
     Subclass 4-5,3-4
-    Non Association Class 4-5,5-6
-    Association Class 4-5,8-9
+    Non Association Class 4-5,11-12
+    Association Class 4-5,6
     Class Reference 10,2
-    Association Reference/2 10-11,7
-    T Reference 7-8,8
-    P Reference 7-8,9
+    Association Reference/2 14,10
     Generalization Reference/2 9,3-4
     Superclass 6-7,3
-    Simple Association Reference/2 9,5-6
-    Association Class Reference/2 9,8-9
-    Perspective 13,7
+    Simple Reference/2 12-13,11-12
+    Associative Reference/2 12-13,8-9
+    Asymmetric Associative Reference/2 11,9
+    Symmetric Associative Reference/2 11,7-8
+    Perspective 5-6,9
+    Symmetric Perspective 30% 7,7-8
+    Asymmetric Perspective 7,10
+    Symmetric T Reference/2 9-10,7
+    Symmetric P Reference/2 9-10,8
+    Asymmetric Reference 9-10,10
 connectors
     -R150 : -/1 r|Class : -/2 l*|Relationship, b|Formalizing Class Role
     +R151 : t|Formalizing Class Role { b|Subclass, b|Non Association Class, b|Association Class }
     +R152-1 : r|Class Reference { l|Generalization Reference, l|Association Reference }
-    +R153 : b|Association Class Reference { t|T Reference, t|P Reference }
-    -R154 : +/1 t|Association Reference : +/1 b*|Perspective
+    +R153 : b|Associative Reference { t|Asymmetric Associative Reference, t|Symmetric Associative Reference }
+    +R154 : t|Perspective { b|Asymmetric Perspective, b|Symmetric Perspective }
     +R155 : -/1 t-2|Class : -/2 l|Formalizing Class Role, b|Class Reference
     +R156 : +/1 t+2|Subclass : +/1 b*|Generalization Reference
-    +R157 : +/1 t|Non Association Class : +/1 b*|Simple Association Reference
-    -R158 : -/1 t-2|Association Class : -/1 b*|T Reference
-    +R159 : +/1 t+2|Association Class : +/1 b*|P Reference
+    +R157 : +/1 t|Non Association Class : +/1 b*|Simple Reference
+    -R158.2 : -/2 t-1|Association Class : +/1 l+1|Associative Reference
+    +R159.2 : +/2 t+1|Association Class : -/1 l-1|Associative Reference
+    +R160 : b|Symmetric Associative Reference { t|Symmetric T Reference, t|Symmetric P Reference }
+    -R161 : -/1 b|Symmetric T Reference : -/1 t*|Symmetric Perspective
+    -R162 : -/1 b|Symmetric P Reference : -/1 t*|Symmetric Perspective
+    +R163 : t|Asymmetric Reference { b|Asymmetric Associative Reference, b-2|Simple Reference }
+    +R164 : -/1 t|Asymmetric Perspective : -/1 b*|Asymmetric Reference
     +R170 : -/1 b-2|Generalization Reference : -/1 t*|Superclass
-    +R176 : b|Association Reference { t|Association Class Reference, t|Simple Association Reference }
+    +R176 : b|Association Reference { t|Associative Reference, t|Simple Reference }
