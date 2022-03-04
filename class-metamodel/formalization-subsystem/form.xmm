@@ -15,27 +15,19 @@ attributes
     Class {I, R151}
     Domain {I, R151}
 --
+class Association Relationship Reference
+attributes
+    From class {I, R152}
+    To class {I, R152}
+    Rnum {I, R152}
+    Domain {I, R152}
+--
 class Associative Reference
 attributes
-    Rnum {I, R176}
-    Domain {I, R176}
-    Association class {R176}
-    Participating class {R176}
---
-class Symmetric Associative Reference
-attributes
-    Rnum {I, R153}
-    Domain {I, R153}
---
-class Symmetric T Reference
-attributes
-    Rnum {I, R160}
-    Domain {I, R160}
---
-class Symmetric P Reference
-attributes
-    Rnum {I, R160}
-    Domain {I, R160}
+    Rnum {I, R176, R158, R159}
+    Domain {I, R176, R158, R159}
+    Association class {I, R176, R158, R159}
+    Participating class {I, R176}
 --
 class Asymmetric Associative Reference
 attributes
@@ -46,14 +38,6 @@ class Asymmetric Reference
 attributes
     Rnum {I, Rx}
     Domain {I, Rx}
---
-class Association Reference
-attributes
-    From class {I, R152}
-    To class {I, R152}
-    Rnum {I, R152, R154}
-    Domain {I, R152, R154}
-    Side {R154}
 --
 class Class <import:Class Attribute>
 attributes
@@ -95,14 +79,14 @@ attributes
     Rnum {I}
     Domain {I}
 --
-class Class Reference
+class Relationship Reference
 attributes
     From class {I, R155}
     To class {I, R155}
     Rnum {I, R155}
     Domain {I, R155}
 --
-class Generalization Reference
+class Generalization Relationship Reference
 attributes
     Subclass  {I, R152, R156}
     Superclass {I, R152, R170}
@@ -111,11 +95,16 @@ attributes
 --
 class Simple Reference
 attributes
-    From class {I, R152, R157, R176}
-    To class {I2, R152c, R176}
-    To side {I3, R171, R176}
-    Rnum {I, I2, I3, R152, R157, R171, R176}
-    Domain {I, I2, I3, R152, R157, R171, R176}
+    From class {I, R176, R157}
+    To class {I2, R176}
+    Rnum {I, I2, I3, R176, R152, R157, R171}
+    Domain {I, I2, I3, R176, R152, R157, R171}
+--
+class Subclass <import:Class Attribute>
+attributes
+    Name {I}
+    Rnum {I}
+    Domain {I}
 --
 class Superclass <import:Class Attribute>
 attributes
@@ -123,11 +112,20 @@ attributes
     Rnum {I}
     Domain {I}
 --
-class Subclass <import:Class Attribute>
+class Symmetric Associative Reference
 attributes
-    Name {I}
-    Rnum {I}
-    Domain {I}
+    Rnum {I, R153}
+    Domain {I, R153}
+--
+class Symmetric T Reference
+attributes
+    Rnum {I, R160}
+    Domain {I, R160}
+--
+class Symmetric P Reference
+attributes
+    Rnum {I, R160}
+    Domain {I, R160}
 --
 relationships
     R150
@@ -143,8 +141,8 @@ relationships
 --
     R152
     Reference +
-        Generalization Reference
-        Association Reference
+        Generalization Relationship Reference
+        Association Relationship Reference
 --
     R153
     Associative Reference +
@@ -159,23 +157,23 @@ relationships
     R155
     is referred to from, Mc Formalizing Class Role
     refers to, M Class
-    1 Class Reference
+    1 Relationship Reference
 --
     R156
     is defined in, 1 Subclass
-    defines, 1 Generalization Reference
+    defines, 1 Generalization Relationship Reference
 --
     R157
     defines, 1 Simple Association Class
     is defined in, 1 Simple Reference
 --
     R158
-    is referenced as t by, 1 Associative Reference
-    references as t, 1 Association Class
+    is origin of t side, 1 Associative Reference
+    originates in, 1 Association Class
 --
     R159
-    is referenced as p by, 1 Associative Reference
-    references as p, 1 Association Class
+    is origin of p side, 1 Associative Reference
+    originates in, 1 Association Class
 --
     R160
     Symmetric Associative Reference +
@@ -201,10 +199,10 @@ relationships
 --
     R170
     refers to, 1 Superclass
-    is referred to by, M Generalization Reference
+    is referred to by, M Generalization Relationship Reference
 --
     R176
-    Association Reference +
+    Association Relationship Reference +
         Simple Associative Reference
         Associative Reference
 --
