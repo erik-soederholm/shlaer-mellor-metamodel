@@ -8,11 +8,11 @@ metadata
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
-subsystem Domain
+subsystem Domain : Shlaer Mellor Metamodel
 class Bridge
 attributes
-    Client {I, R7}
-    Service {I, R7c}
+    Client {I, /R7/satisfies assumptions of.Name}
+    Service {I, /R7c/makes assumptions on.Name}
 --
 class Class <import:Class And Attribute>
 attributes
@@ -63,11 +63,11 @@ class Subsystem Element
 attributes
     Number {I, R16, UR14}
     Domain {I, R16, R13}
-    Subsystem {R13}
+    Subsystem {R13.Name}
 --
 class Domain Partition
 attributes
-    Number : Element Number {I, OR2}
+    Number : Element Number {I, rOR2}
     Domain {I, R3, OR2}
 --
 class Relationship <import:Relationship>
