@@ -8,18 +8,18 @@ metadata
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
-subsystem Formalization
+subsystem Formalization : Shlaer Mellor Metamodel
 class Association Class <import:Relationship>
 attributes
-    Rnum {I, R120c, R151}
-    Class {I2, R120, R151}
-    Domain {I, I2, R120, R151}
+    Rnum {I, R120c}
+    Class {I2, R120.Name}
+    Domain {I, I2, R120}
 --
 class Association Class Reference
 attributes
     Ref type {I, R176}
-    Association class {I, R176}
-    Participating class {I, R176}
+    Association class {I, R176.From class}
+    Participating class {I, R176.To class}
     Rnum {I, R176}
     Domain {I, R176}
 --
@@ -30,7 +30,7 @@ attributes
     To class {I, R152}
     Rnum {I, R152, R154}
     Domain {I, R152, R154}
-    Perspective {R154}
+    Perspective {R154.Side}
 --
 class Class <import:Class And Attribute>
 attributes
@@ -40,13 +40,14 @@ attributes
 class Formalizing Class Role
 attributes
     Rnum {I, R150}
-    Class {I, R150}
+    Class {I, R150.Name}
     Domain {I, R150}
 --
 class Generalization Reference
 attributes
-    Subclass {I, R152, R156}
-    Superclass {I, R152, R170}
+    Ref type = G {R152}
+    Subclass {I, R152.From class, R156}
+    Superclass {I, R152.To class, R170}
     Rnum {I, R152, R156, R170}
     Domain {I, R152, R156, R170}
 --
@@ -70,13 +71,14 @@ attributes
 class Reference
 attributes
     Ref : Reference Type {I}
-    From class {I, R155}
-    To class {I, R155}
+    From class {I, /R155/Formalizing Class Role.Class}
+    To class {I, /R155/Class.Name}
     Rnum {I, R155}
     Domain {I, R155}
 --
 class Simple Association Reference
 attributes
+    Ref type = R {R176}
     From class {I, R157, R176}
     To class {I, R176}
     Rnum {I, R157, R176}
@@ -96,6 +98,7 @@ attributes
 --
 class P Reference
 attributes
+    Ref type = P {R153}
     Association class {I, R153c}
     Participating class {I, R153}
     Rnum {I, R153, R159}
@@ -103,6 +106,7 @@ attributes
 --
 class T Reference
 attributes
+    Ref type = T {R153}
     Association class {I, R153c}
     Participating class {I, R153}
     Rnum {I, R153, R158}
