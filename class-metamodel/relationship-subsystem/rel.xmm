@@ -8,7 +8,7 @@ metadata
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
-subsystem Relationship
+subsystem Relationship : Shlaer Mellor Metamodel
 class Association
 attributes
     Rnum {I, R100}
@@ -17,7 +17,7 @@ attributes
 class Association Class
 attributes
     Rnum {I, R120c, R151}
-    Class {I2, R120, R151}
+    Class {I2, R120.Name, R151}
     Domain {I, I2, R120, R151}
 --
 class Asymmetric Perspective
@@ -38,7 +38,7 @@ attributes
 --
 class Class In Lineage
 attributes
-    Class {I, R131}
+    Class {I, R131.Name}
     Lnum {I, R131}
     Domain {I, R131}
 --
@@ -50,7 +50,7 @@ attributes
 class Facet
 attributes
     Rnum {I, R101}
-    Class {I, R101}
+    Class {I, R101.Name}
     Domain {I, R101}
 --
 class Generalization
@@ -94,8 +94,8 @@ class Ordinal Relationship
 attributes
     Rnum {I, R100}
     Domain {I, R100, R104, R106, R107}
-    Ranked class {R104, R106, R107}
-    Ranking attribute {R106}
+    Ranked class {R104.Name, R106.Class, R107.Class}
+    Ranking attribute {R106.Attribute}
     Ranking identifier {R107, R106}
     Ascending perspective : Phrase Name
     Descending perspective : Phrase Name
@@ -104,13 +104,14 @@ class P Perspective
 attributes
     Rnum {I, R125, R105}
     Domain {I, R105, R125}
+    Side = P {R105}
 --
 class Perspective
 attributes
     Side : Side {I}
     Rnum {I, I2}
     Domain {I, I2, R110}
-    Viewed class {R110}
+    Viewed class {R110.Name}
     Phrase : Phrase Name {I2}
     Conditional : Boolean
     Multiplicity : One Many
@@ -136,11 +137,13 @@ class Symmetric Perspective
 attributes
     Rnum {I, R123, R121}
     Domain {I, R121, R123}
+    Side = S {R121}
 --
 class T Perspective
 attributes
     Rnum {I, R124, R105}
     Domain {I, R105, R124}
+    Side = T {R105}
 --
 class Unary Association
 attributes
