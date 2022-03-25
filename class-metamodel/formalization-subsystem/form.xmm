@@ -45,7 +45,7 @@ attributes
 --
 class Generalization Reference
 attributes
-    Ref type = G {R152}
+    Ref type {Ignore, R152}
     Subclass {I, R152.From class, R156}
     Superclass {I, R152.To class, R170}
     Rnum {I, R152, R156, R170}
@@ -78,7 +78,7 @@ attributes
 --
 class Simple Association Reference
 attributes
-    Ref type = R {R176}
+    Ref type {Ignore, R176}
     From class {I, R157, R176}
     To class {I, R176}
     Rnum {I, R157, R176}
@@ -98,7 +98,7 @@ attributes
 --
 class P Reference
 attributes
-    Ref type = P {R153}
+    Ref type {Ignore, R153}
     Association class {I, R153c}
     Participating class {I, R153}
     Rnum {I, R153, R159}
@@ -106,7 +106,7 @@ attributes
 --
 class T Reference
 attributes
-    Ref type = T {R153}
+    Ref type {Ignore, R153}
     Association class {I, R153c}
     Participating class {I, R153}
     Rnum {I, R153, R158}

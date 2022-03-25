@@ -104,7 +104,7 @@ class P Perspective
 attributes
     Rnum {I, R125, R105}
     Domain {I, R105, R125}
-    Side = P {R105}
+    Side {Ignore, R105}
 --
 class Perspective
 attributes
@@ -137,13 +137,13 @@ class Symmetric Perspective
 attributes
     Rnum {I, R123, R121}
     Domain {I, R121, R123}
-    Side = S {R121}
+    Side {Ignore, R121}
 --
 class T Perspective
 attributes
     Rnum {I, R124, R105}
     Domain {I, R105, R124}
-    Side = T {R105}
+    Side {Ignore, R105}
 --
 class Unary Association
 attributes
