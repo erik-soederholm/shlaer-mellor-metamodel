@@ -8,7 +8,7 @@ metadata
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
-subsystem State
+subsystem State : Shlaer Mellor Metamodel
 class Assigner
 attributes
     Rnum {I, R501, R502}
@@ -43,19 +43,20 @@ attributes
 --
 class Event Response
 attributes
-    State {I, R505}
+    State {I, /R505/State}
     Event {I, R505}
     State model {I, R505}
     Domain {I, R505}
 --
 class Initial Pseudo State
 attributes
+    Name {Ignore, R510}
     Class {I, R510, R508}
     Domain {I, R510, R508}
 --
 class Lifecycle
 attributes
-    Class {I, R500, R502}
+    Class {I, R500.Name, R502}
     Domain {I, R500, R502}
 --
 class Multiple Assigner
@@ -63,7 +64,7 @@ attributes
     Rnum {I, R514}
     Domain {I, R514, R517, R518}
     Loop {R517c}
-    Partitioning class {R518c}
+    Partitioning class {R518c.Name}
 --
 class Non Deletion State
 attributes
