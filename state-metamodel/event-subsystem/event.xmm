@@ -8,7 +8,7 @@ metadata
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
-subsystem Event
+subsystem Event : Shlaer Mellor Metamodel
 class Class <import:Class And Attribute>
 attributes
     Name {I}
@@ -22,8 +22,8 @@ attributes
 --
 class Delegation On Generalization
 attributes
-    Delegated event {I, R569}
-    Superclass {I, R569}
+    Delegated event {I, R569.Name}
+    Superclass {I, R569.Class}
     Domain {I, R569}
     Generalization {I, R569c}
 --
@@ -72,11 +72,11 @@ attributes
 --
 class Forwarded Event
 attributes
-    Name {I, R553}
-    Subclass {I, R553}
+    Name {I, R553.Delegated event}
+    Subclass {I, R553.Class}
     Domain {I, R553}
     Superclass {R553}
-    Generalization {R553}
+    Generalization {/R553/Delegation On Generalization, /R553/Subclass}
 --
 class Monomorphic Event
 attributes
@@ -93,7 +93,7 @@ attributes
 class Polymorphic Event Specification
 attributes
     Name {I, R550, R558}
-    Class {I, R551c, R550, R558}
+    Class {I, R551c.Name, R550, R558}
     Domain {I, R551, R550, R558}
 --
 class Root Delegated Event
